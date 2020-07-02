@@ -8,6 +8,7 @@ const routes = require('./routes/index');
 const newsRoute = require('./routes/news');
 const { options } = require('./routes/index');
 const connectDB = require('./connection/db');
+var authRoute = require('./routes/auth');
 
 let app = express();
 
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //routes
 app.use('/', routes);
+app.use('/user', authRoute);
 app.use('/news', newsRoute);
 
 const PORT = process.env.PORT || 5000;

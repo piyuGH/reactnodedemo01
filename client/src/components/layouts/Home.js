@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import News from '../containers/News'
+import Login from '../presentation/Login';
 
 class Home extends Component {
     render() {

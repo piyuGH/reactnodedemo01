@@ -67,8 +67,8 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/:id', function(req, res, next){
-    const id = req.params._id;
-    console.log('news.js (/:id)'+ req.params._id);
+    const id = req.params.id;
+    console.log('news.js (/:id)'+ req.params.id);
     newsController.findById(id, function(err, result){
     
         if(err){

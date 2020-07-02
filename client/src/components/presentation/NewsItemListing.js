@@ -8,7 +8,7 @@ class NewsItemListing extends Component {
             <div>
                 {/* <div><b>{this.props.title}</b></div>*/}
                 <div>
-                    <Link to={`/news/${this.props.data.id}`}>
+                    <Link to={`/news/${this.props.data._id}`}>
                         <b>{this.props.data.title}</b>
                     </Link>
                 </div>

@@ -9,9 +9,13 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import NewsArticle from './components/containers/NewsArticle';
 import NewsSubmit from './components/containers/NewsSubmit';
+import Authentication from './components/containers/Authentication';
 
 class App extends Component {
   render() {
+    
+
+
     return (
       <Provider store={store}>
         <BrowserRouter>
@@ -19,7 +23,8 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
             <Route path="/news/:id" component={NewsArticle} /> {/* component={NewsItemDetail} */}
-            <Route path='/submit' component={NewsSubmit}/>
+            <Route path='/submit' component={NewsSubmit} />
+            <Route path='/user' component={Authentication} />
           </Layout>
         </BrowserRouter>
       </Provider>
@@ -27,4 +32,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App; 

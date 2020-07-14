@@ -1,15 +1,23 @@
-var mongoose = require('mongoose');
+
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema; 
+//uuid = require('uuid');
 
 const UserDetailsSchema = new mongoose.Schema({
     userID: {
-        type: ObjectId,
+        type: Schema.Types.ObjectId,
+        ref: 'users',
         index: { unique: true }
     },
     firstName: String,
     lastName: String,
     occupation: String,
     address: String,
-    cityId: ObjectId,
+    cityId: {
+        type: Schema.Types.ObjectId,
+        ref: 'city',
+        required: true
+    },
     pinCode: String,
     createdDate: {
         type: Date,

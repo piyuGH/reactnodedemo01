@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import Login from '../presentation/Login';
 import Register from '../presentation/Register';
 import { logoutUser } from '../../actions/authActions';
+import UserInfo from '../presentation/UserInfo';
 
 class Authentication extends Component {
-
     constructor() {
         super();
 
@@ -42,7 +42,7 @@ class Authentication extends Component {
                 {this.state.toggleReg ? <Register /> : <Login />}
             </div>
         );
-        const userLoggedIn = (<div>Logged in as: {this.props.username} <button onClick={this.logout.bind(this)}>Logout</button></div>);
+        const userLoggedIn = (<div>Logged in as: {this.props.username} <button onClick={this.logout.bind(this)}>Logout</button> <UserInfo/> </div>);
 
         return (
             <div>

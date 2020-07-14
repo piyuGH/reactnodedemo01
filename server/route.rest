@@ -5,4 +5,10 @@ GET http://localhost:5000/news
 GET http://localhost:5000/news/5ef58b21540c38a9dc6e32e5
 
 ###
-GET http://localhost:5000/news/5ef58c6c540c38a9dc6e32e7
+GET http://localhost:5000/users
+
+###
+GET http://localhost:5000/city
+
+###
+GET http://localhost:5000/userInfo/province

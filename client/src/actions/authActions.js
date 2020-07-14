@@ -20,6 +20,7 @@ function logout() {
     }
 }
 
+
 export function submitLogin(data) {
     return dispatch => {
         return fetch(`/user/${data.username}`, {

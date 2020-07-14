@@ -1,7 +1,9 @@
 
 require('dotenv').config()
 const mongoose = require('mongoose');
+var assert = require('assert');
 const { json } = require('body-parser');
+
 // .env file
 const DB_USER = process.env.DB_USER
 const DB_PASS = process.env.DB_PASS
@@ -17,7 +19,7 @@ const MongoClient = require("mongodb").MongoClient;
 //-----------------
 var database, collection;
 const dbURL = `mongodb+srv://${DB_USER}:${DB_PASS}@clustermosandbox-r534m.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
-const connectDB = async () => {
+exports.connectDB = async () => {
     await mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, function (err, client) {
         if (err) {
             console.log('Error connecting to: ' + dbURL)
@@ -38,4 +40,33 @@ const connectDB = async () => {
     db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 }
 
-module.exports = connectDB;
+exports.getData = async function (req, res) {
+    console.log('in getData ' + req)
+    await mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, async function (err, db) {
+        assert.equal(null, err);
+        //getting records            
+        collection = await db.collection(req);
+
+        collection.find().forEach(function (myDoc) { console.log(myDoc._id + " : " + myDoc.CityName); });
+
+        if (err) {
+            console.log(err);
+            return res.json({
+                success: 0,
+                error: err
+            });
+        
+        }
+        //callback(null, collection);
+        //res.json(JSON.stringify(collection));
+        res.status(200).json({
+            success: 1,
+            in:'db.js',
+            data: collection
+        });
+
+    });
+}
+
+//module.exports = connectDB;
+

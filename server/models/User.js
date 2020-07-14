@@ -16,13 +16,11 @@ const UserSchema = new mongoose.Schema({
     }  
 });
 
-
 UserSchema.methods.comparePassword = function comparePassword(password, callback) {
      bcrypt.compare(password, this.password, callback);
 };
 
 // On save, hash the password
-
 UserSchema.pre('save', function saveHook(next) {
     var user = this;
 
@@ -42,6 +40,5 @@ UserSchema.pre('save', function saveHook(next) {
         });
     });
 });
-
 
 module.exports = mongoose.model('User', UserSchema);
